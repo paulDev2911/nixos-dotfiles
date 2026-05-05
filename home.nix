@@ -13,6 +13,7 @@ in
     ./modules/neovim.nix
     ./modules/suckless.nix
     ./modules/git.nix
+    ./modules/bash.nix
 ];
 
   home.username = "user";
