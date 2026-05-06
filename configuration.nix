@@ -105,6 +105,7 @@
    brave
    
    btop
+   slstatus
 ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
