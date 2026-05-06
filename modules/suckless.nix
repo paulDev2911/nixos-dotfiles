@@ -13,6 +13,12 @@
     (pkgs.slstatus.overrideAttrs (_: {
       src = ../config/slstatus;
     }))
+    (pkgs.tabbed.overrideAttrs (_: {
+      src = ../config/tabbed;
+    }))
+    (pkgs.scroll.overrideAttrs (_: {
+      src = ../config/scroll;
+    }))
     slock
     #surf
   ];
