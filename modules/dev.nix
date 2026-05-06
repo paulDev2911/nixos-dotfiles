@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     # C#
     dotnet-sdk
-    owmisharp-roslyn
+    omnisharp-roslyn
 
     # C
     gdb
