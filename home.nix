@@ -14,6 +14,7 @@ in
     ./modules/suckless.nix
     ./modules/git.nix
     ./modules/bash.nix
+    ./modules/dev.nix
 ];
 
   home.username = "user";
