@@ -66,6 +66,5 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    { run_command, "%s%%", "cat /sys/class/power_supply/BAT0/capacity"},
     { datetime, "%s",           "%F %T" },
 };
