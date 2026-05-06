@@ -10,6 +10,9 @@
       src = ../config/dmenu;
       patches = [ ];
     }))
+    (pkgs.slstatus.overrideAttrs (_: {
+      src = ../config/slstatus;
+    }))
     slock
     #surf
   ];
