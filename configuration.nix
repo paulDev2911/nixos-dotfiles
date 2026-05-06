@@ -83,6 +83,13 @@
     '';
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      slstatus = prev.slstatus.overrideAttrs (_: {
+        src = ./config/slstatus;
+      });
+    })
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
