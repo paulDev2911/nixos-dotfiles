@@ -80,7 +80,7 @@
       };
     };
     displayManager.sessionCommands = ''
-      ${pkgs.slstatus}/bin/slstatus &
+i      ${pkgs.slstatus.override { conf = builtins.readFile ./config/slstatus/config.h; }}
     '';
   };
 
