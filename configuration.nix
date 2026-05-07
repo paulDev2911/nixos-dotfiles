@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -84,31 +84,26 @@
     '';
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      slstatus = prev.slstatus.overrideAttrs (_: {
-        src = ./config/slstatus;
-      });
-    })
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  environment.systemPackages = (with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    
-   wget
-   curl
-   git
-   st
-
-   firefox
-   brave
+    wget
+    curl
+    git
+    st
+  
+    firefox
    
-   btop
-   slstatus
-];
-
+    btop
+    slstatus
+  ]) 
+  ++ 
+  (with pkgs-unstable; [
+    brave
+  ]);
+  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
