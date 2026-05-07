@@ -88,6 +88,7 @@
     (final: prev: {
       slstatus = prev.slstatus.overrideAttrs (_: {
         src = ./config/slstatus;
+        buildInputs = old.buildInputs or [];
       });
     })
   ];
