@@ -25,6 +25,13 @@ in
     enable = true;
   };
 
+  xsession = {
+    enable = true;
+    initExtra = ''
+      ${pkgs.slstatus.override { conf = builtins.readFile ./config/slstatus/config.h; }}/bin/slstatus &
+    '';
+  };
+
   xdg.configFile = builtins.mapAttrs 
     (name: subpath: {
       source = create_symlink "${dotfiles}/${subpath}";

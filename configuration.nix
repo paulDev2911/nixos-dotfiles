@@ -79,9 +79,6 @@
         src = ./config/dwm;
       };
     };
-    displayManager.sessionCommands = ''
-i      ${pkgs.slstatus.override { conf = builtins.readFile ./config/slstatus/config.h; }}
-    '';
   };
 
   #nixpkgs.overlays = [
