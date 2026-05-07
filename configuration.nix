@@ -84,14 +84,14 @@
     '';
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      slstatus = prev.slstatus.overrideAttrs (_: {
-        src = ./config/slstatus;
-        buildInputs = old.buildInputs or [];
-      });
-    })
-  ];
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #    slstatus = prev.slstatus.overrideAttrs (old: {
+  #      src = ./config/slstatus;
+  #      buildInputs = old.buildInputs or [];
+  #    });
+  #  })
+  #];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -106,7 +106,9 @@
     firefox
    
     btop
-    slstatus
+    (slstatus.override {
+      conf = builtins.readFile ./config/slstatus/config.h;
+    })
   ]) 
   ++ 
   (with pkgs-unstable; [
