@@ -80,7 +80,7 @@
       };
     };
     displayManager.sessionCommands = ''
-      slstatus &
+      ${pkgs.slstatus}/bin/slstatus &
     '';
   };
 
