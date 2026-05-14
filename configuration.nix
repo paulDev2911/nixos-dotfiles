@@ -101,7 +101,9 @@
     st
   
     firefox
-   
+
+    libfido2
+
     btop
     (slstatus.override {
       conf = builtins.readFile ./config/slstatus/config.h;
@@ -111,7 +113,9 @@
   (with pkgs-unstable; [
     brave
   ]);
-  
+
+  services.udev.packaes = [pkgs.libfido2];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
