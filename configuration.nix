@@ -114,7 +114,7 @@
     brave
   ]);
 
-  services.udev.packaes = [pkgs.libfido2];
+  services.udev.packages = [pkgs.libfido2];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
