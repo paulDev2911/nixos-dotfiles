@@ -112,6 +112,8 @@
     ansible-lint
     python3Packages.httpx
 
+    wireguard-tools
+
     btop
     (slstatus.override {
       conf = builtins.readFile ./config/slstatus/config.h;
