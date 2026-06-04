@@ -108,6 +108,9 @@
 
     libfido2
 
+    ansible
+    ansible-lint
+
     btop
     (slstatus.override {
       conf = builtins.readFile ./config/slstatus/config.h;
