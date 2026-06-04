@@ -100,6 +100,8 @@
     git
     st
   
+    keepassxc
+    
     firefox
 
     libfido2
