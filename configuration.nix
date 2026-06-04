@@ -110,6 +110,7 @@
 
     ansible
     ansible-lint
+    python3Packages.httpx
 
     btop
     (slstatus.override {
