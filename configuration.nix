@@ -29,19 +29,31 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.100.0.3/24" ];
-    privateKeyFile = "/home/user/.wireguard/laptop_private.key";
+#  networking.wireguard.interfaces.wg0 = {
+#    ips = [ "10.100.0.3/24" ];
+#    privateKeyFile = "/home/user/.wireguard/laptop_private.key";
   
-    peers = [
-      {
-        publicKey = "e3EfbIfVT80/khEt9DWHU9SqvM04Jm9KCR8ZCSQ69UA=";
-        allowedIPs = [ "192.168.0.0/16" "10.100.0.0/24" ];
-        endpoint = "[2003:c2:2f28:b594:1491:a0f:18ac:52ab]:51820";
-        persistentKeepalive = 25;
-      }
-    ];
+#    peers = [
+#      {
+#        publicKey = "e3EfbIfVT80/khEt9DWHU9SqvM04Jm9KCR8ZCSQ69UA=";
+#        allowedIPs = [ "192.168.0.0/16" "10.100.0.0/24" ];
+#        endpoint = "[2003:c2:2f28:b594:1491:a0f:18ac:52ab]:51820";
+#        persistentKeepalive = 25;
+#      }
+#    ];
+#  };
+  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    dnsovertls = "true";
   };
+
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -119,6 +131,11 @@
     keepassxc
     
     firefox
+#    librewolf
+
+    mullvad-vpn
+#    mullvad
+    mullvad-browser
 
     libfido2
 
