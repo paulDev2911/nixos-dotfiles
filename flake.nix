@@ -6,9 +6,11 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    openziti-nix.url = "github:rochecompaan/openziti-nix";
+    openziti-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, openziti-nix, ... }:
       let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -34,6 +36,9 @@
         specialArgs = { inherit pkgs-unstable; };
         modules = [
           ./configuration.nix
+          openziti-nix.nixosModules.withOverlays
+          openziti-nix.nixosModules.ziti-edge-tunnel
+          ./modules/openziti.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -46,4 +51,3 @@
       };
     };
 }
-

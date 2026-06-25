@@ -53,11 +53,32 @@
         "type": "github"
       }
     },
+    "openziti-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781420259,
+        "narHash": "sha256-7p/WTANAeqp3ZfRMWupIGr9oehqCBKpXgfUfL8HalX4=",
+        "owner": "rochecompaan",
+        "repo": "openziti-nix",
+        "rev": "df4e3f85a5a8ca4191d36b55eaf0d6b8bebee935",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rochecompaan",
+        "repo": "openziti-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "openziti-nix": "openziti-nix"
       }
     }
   },
