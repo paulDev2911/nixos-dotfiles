@@ -120,6 +120,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+  programs.thunar.enable = true;
+
   environment.systemPackages = (with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    
@@ -127,14 +130,16 @@
     curl
     git
     st
-  
+
+    obsidian
+
     keepassxc
     
     firefox
 #    librewolf
 
     mullvad-vpn
-#    mullvad
+    mullvad
     mullvad-browser
 
     libfido2
