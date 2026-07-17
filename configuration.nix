@@ -134,33 +134,20 @@
     obsidian
 
     keepassxc
-    
-    firefox
-#    librewolf
 
     mullvad-vpn
     mullvad
     mullvad-browser
 
-    libfido2
-
-    ansible
-    ansible-lint
-    python3Packages.httpx
-
-    wireguard-tools
-
     btop
     (slstatus.override {
       conf = builtins.readFile ./config/slstatus/config.h;
     })
-  ]) 
-  ++ 
-  (with pkgs-unstable; [
-    brave
-  ]);
-
-  services.udev.packages = [pkgs.libfido2];
+  ]); 
+#  ++ 
+#  (with pkgs-unstable; [
+#
+#  ]);
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
