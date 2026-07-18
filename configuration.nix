@@ -135,6 +135,8 @@
 
     keepassxc
 
+    firefox
+
     mullvad-vpn
     mullvad
     mullvad-browser
