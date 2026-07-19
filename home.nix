@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     nvim = "nvim";
+  };
+
+  direnvMap = {
+    "htb" = "pentest";
+#    "code/opentofu-IaC" = "iac";
+#    "code/ansible-opnsense" = "iac";
+#    "code/k8s-IaC" = "iac";
   };
 in
 
@@ -15,7 +22,7 @@ in
     ./modules/git.nix
     ./modules/bash.nix
     ./modules/dev.nix
-];
+  ];
 
   home.username = "user";
   home.homeDirectory = "/home/user";
@@ -30,6 +37,12 @@ in
     nix-direnv.enable = true;
     enableBashIntegration = true;
   };
+
+  home.file = lib.mapAttrs' (dir: shell:
+    lib.nameValuePair "${dir}/.envrc" {
+      text = "use flake ~/nixos-dotfiles#${shell}\n";
+    }
+  ) direnvMap;
 
   xsession = {
     enable = true;
