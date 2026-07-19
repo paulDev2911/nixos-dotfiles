@@ -25,6 +25,12 @@ in
     enable = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableBashIntegration = true;
+  };
+
   xsession = {
     enable = true;
     initExtra = ''
