@@ -19,6 +19,16 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+#  services.blueman.enable = true;
+
   networking.hostName = "nix"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -124,6 +134,9 @@
   programs.thunar.enable = true;
 
   environment.systemPackages = (with pkgs; [
+    
+    pavucontrol
+
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    
     wget
