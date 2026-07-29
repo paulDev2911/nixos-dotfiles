@@ -38,7 +38,27 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  networking.networkmanager.ensureProfiles = {
+    profiles = {
+      eno0-mgmt = {
+        connection = {
+          id = "eno0-mgmt";
+          type = "ethernet";
+          interface-name = "eno0";
+        };
+        ipv4 = {
+          method = "manual";
+          addresses = "192.168.10.50/24";
+          gateway = "192.168.10.1";
+          routes = "192.168.20.0/24,192.168.10.1,100 192.168.30.0/24,192.168.10.1,100";
+          dns = "192.168.10.1";
+        };
+        ipv6 = {
+          method = "disabled";
+        };
+      };
+    };
+  };
 #  networking.wireguard.interfaces.wg0 = {
 #    ips = [ "10.100.0.3/24" ];
 #    privateKeyFile = "/home/user/.wireguard/laptop_private.key";
