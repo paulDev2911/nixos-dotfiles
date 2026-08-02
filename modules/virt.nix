@@ -2,10 +2,14 @@
 
 {
   virtualisation.libvirtd.enable = true;
-  users.users.user.extraGroups = [ "libvirtd" ];
+  users.users.user.extraGroups = [ "libvirtd" "kvm" ];
+  programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
-    virt-manager
     qemu
+    libvirt
+    pkg-config
+    virt-viewer
+    virt-manager
   ];
 }
